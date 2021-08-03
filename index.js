@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 const fetch = require('node-fetch');
 const weather = require('weather-js');
