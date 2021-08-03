@@ -1,0 +1,24 @@
+{
+  "name": "my-weather",
+  "version": "0.1.0",
+  "description": "Output weather by ip-address",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chelovek-gorod/Module.git"
+  },
+  "author": "Marsel Mirge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chelovek-gorod/Module/issues"
+  },
+  "homepage": "https://github.com/chelovek-gorod/Module#readme",
+  "dependencies": {
+    "node-fetch": "2.6.1",
+    "weather-js": "2.0.0"
+  }
+}
