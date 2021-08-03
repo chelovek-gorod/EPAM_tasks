@@ -1,0 +1,10 @@
+body {font-family: Arial, sans-serif; color: #00ff00; background-color: black; background-image: url(../images/bg.jpg);}
+
+#shell {width: 720px; margin: 60px auto; text-align: center;}
+h1 {color: #ffffff; letter-spacing: 7px; text-shadow: 0px 2px 7px #164441;}
+button {margin: 0 18px; width: 200px; font-size: 18px; padding: 6px; border-radius: 8px; font-weight: 600; cursor: pointer;
+    color: #000000; background-color: #ffffff; transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s;}
+button:hover {background-color: #00c2ff;}
+.turnOn {color: #00ff00;}
+#divOutput {width: 700px; margin-top: 10px; padding: 10px; text-align: left; border: solid 2px #707070;
+    background-color: #000000; border-radius: 10px; min-height: 480px;}
