@@ -51,7 +51,8 @@ function getNewObject(checkedArr) {
 function getAddObjectsFromList(checkedArr) {
     let newObject = {};
     for (let object of checkedArr) {
-        for (let [key, value] of Object.entries(objectsArr[object.getAttribute("index")])) {
+        let objArr = Object.entries(objectsArr[object.getAttribute("index")]);
+        for (let [key, value] of objArr) {
             if (key in newObject) newObject[key] += value;
             else newObject[key] = value;
         }
