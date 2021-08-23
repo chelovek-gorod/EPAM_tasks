@@ -6,28 +6,32 @@ let objRandNumbersSize = +inputNumbers.value;
 const container = document.getElementById("container");
 const table = document.createElement('table');
 const canvas = document.createElement('canvas');
-const canvasWidth = 600;
-const canvasHeight = 600;
-let offset_x = 50;
-let offset_y = 50;
+
+const canvasSettings = {
+    width: 600,
+    height: 600,
+    offset_x: 50,
+    offset_y: 50,
+};
+
 let minValueX = -10;
-let maxValueX = 10;
+let maxValueX = 10;  // 91 setProbability(object)
 let minValueY = 0;
 let maxValueY = 1;
 let x_steps = 20;
 let y_steps = 20;
-let xValuesArr = [];
+let xValuesArr = []; // 139 axisesValuesX()
 for (let i = minValueX; i <= maxValueX; i++)
     xValuesArr.push(i);
-let yValuesArr = [];
+let yValuesArr = []; // axisesValuesY()
 for (let i = 0; i <= y_steps; i++)
     yValuesArr.push(+(((maxValueY - minValueY) / y_steps) * i).toFixed(2));
-let stepSizeX = (canvasWidth - offset_x * 2) / x_steps;
-let stepSizeY = (canvasHeight - offset_y * 2) / y_steps;
-let pixelY = ((maxValueY - minValueY) / y_steps) / stepSizeY;
+let stepSizeX = (canvasSettings.width - canvasSettings.offset_x * 2) / x_steps;   // 91 setProbability(object), 139 axisesValuesX()
+let stepSizeY = (canvasSettings.height - canvasSettings.offset_y * 2) / y_steps;  // 126 axisesValuesY()
+let pixelY = ((maxValueY - minValueY) / y_steps) / stepSizeY;                     // 91 setProbability(object)
 
-canvas.width = canvasWidth;
-canvas.height = canvasHeight;
+canvas.width = canvasSettings.width;
+canvas.height = canvasSettings.height;
 let ctx = canvas.getContext('2d');
 
 window.onload = ()=> {
@@ -56,85 +60,111 @@ function createObjRandNumbers(size) {
 
 function drawTable(object) {
     container.appendChild(table);
-    let tableHtml = "<thead><tr><th>Values:</th><th>Numbers:</th></tr></thead>"
-    for (let [key, value] of Object.entries(object)) {
+    let tableHtml = "<thead><tr><th>Values:</th><th>Numbers:</th></tr></thead>";
+    let objArr = Object.entries(object);
+    for (let [key, value] of objArr) {
         tableHtml += (`<tr><td>${key}</td><td>${value}</td></tr>`);
     }
     table.innerHTML = tableHtml;
 }
 
 function drawGraph(object) {
-    // set in object values Probability density
-    let objectsGaussArr = [];
-    for (let [valueX, numbers] of Object.entries(object)) {
-        let valueY = numbers / objRandNumbersSize;
-        let xx = offset_x + stepSizeX * (+valueX + maxValueX);
-        let yy = canvasHeight - offset_y - (valueY / pixelY);
-        objectsGaussArr.push({x: xx, y: yy});
-    }
-    objectsGaussArr.sort((a, b) => a.x > b.x ? 1 : -1);
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    let objectsGaussArr = setProbability(object);
+    
+    ctx.clearRect(0, 0, canvasSettings.width, canvasSettings.height);
 
-    // draw axises
+    drawAxises();
+    
+    ctx.fillStyle = "black";
+    ctx.lineWidth = 1.0;
+    ctx.font = 'normal 14px arial';
+
+    axisesValuesY();
+    axisesValuesX();
+    
+    drawPoints(objectsGaussArr)
+    drawLines(objectsGaussArr)
+    
+    ctx.stroke();
+}
+
+function setProbability(object) {
+    let gaussArr = [];
+    let objArr = Object.entries(object);
+    for (let [valueX, numbers] of objArr) {
+        let valueY = numbers / objRandNumbersSize;
+        let xx = canvasSettings.offset_x + stepSizeX * (+valueX + maxValueX);
+        let yy = canvasSettings.height - canvasSettings.offset_y - (valueY / pixelY);
+        gaussArr.push({x: xx, y: yy});
+    }
+    gaussArr.sort((a, b) => a.x > b.x ? 1 : -1);
+    return gaussArr;
+}
+
+function drawAxises() {
     ctx.fillStyle = "black";
     ctx.strokeStyle = "black";
     ctx.textAlign = "left"
     ctx.lineWidth = 2.0;
     ctx.beginPath();
-    ctx.moveTo(offset_x, 10);
-    ctx.lineTo(offset_x - 5, 20); 
-    ctx.moveTo(offset_x, 10);
-    ctx.lineTo(offset_x + 5, 20);
-    ctx.moveTo(offset_x, 10);
-    ctx.lineTo(offset_x, canvasHeight - offset_y);
-    ctx.lineTo(offset_x + 540, canvasHeight - offset_y);
-    ctx.lineTo(offset_x + 530, canvasHeight - offset_y - 5);
-    ctx.moveTo(offset_x + 540, canvasHeight - offset_y);
-    ctx.lineTo(offset_x + 530, canvasHeight - offset_y + 5);
+    ctx.moveTo(canvasSettings.offset_x, 10);
+    ctx.lineTo(canvasSettings.offset_x - 5, 20); 
+    ctx.moveTo(canvasSettings.offset_x, 10);
+    ctx.lineTo(canvasSettings.offset_x + 5, 20);
+    ctx.moveTo(canvasSettings.offset_x, 10);
+    ctx.lineTo(canvasSettings.offset_x, canvasSettings.height - canvasSettings.offset_y);
+    ctx.lineTo(canvasSettings.offset_x + 540, canvasSettings.height - canvasSettings.offset_y);
+    ctx.lineTo(canvasSettings.offset_x + 530, canvasSettings.height - canvasSettings.offset_y - 5);
+    ctx.moveTo(canvasSettings.offset_x + 540, canvasSettings.height - canvasSettings.offset_y);
+    ctx.lineTo(canvasSettings.offset_x + 530, canvasSettings.height - canvasSettings.offset_y + 5);
     ctx.stroke();
     ctx.font = 'bold 18px arial';
     ctx.fillText('Probability density', 60, 40);
-    ctx.fillText('Values', 530, canvasHeight - offset_y - 10);
+    ctx.fillText('Values', 530, canvasSettings.height - canvasSettings.offset_y - 10);
+}
 
-    // draw axises values
-    ctx.fillStyle = "black";
-    ctx.lineWidth = 1.0;
-    ctx.font = 'normal 14px arial';
-    // axises Probability density (Y)
+function axisesValuesY() {
     ctx.textAlign = "right"
-    for (let i = 0; i < yValuesArr.length; i++) {
-        let yy = canvasHeight - (offset_y + (stepSizeY * i));
-        ctx.fillText(yValuesArr[i].toFixed(2), offset_x - 10, yy + 5); 
+    const yArrLength = yValuesArr.length;
+    for (let i = 0; i < yArrLength; i++) {
+        let yy = canvasSettings.height - (canvasSettings.offset_y + (stepSizeY * i));
+        ctx.fillText(yValuesArr[i].toFixed(2), canvasSettings.offset_x - 10, yy + 5); 
         ctx.beginPath(); 
-        ctx.moveTo(offset_x - 5, yy); 
-        ctx.lineTo(offset_x + 5, yy); 
+        ctx.moveTo(canvasSettings.offset_x - 5, yy); 
+        ctx.lineTo(canvasSettings.offset_x + 5, yy); 
         ctx.stroke();
     }
-    // axises Values (X)
-    ctx.textAlign = "center"
-    for (let i = 0; i < xValuesArr.length; i++) {
-        let xx = offset_x + (stepSizeX * i);
-        ctx.fillText(xValuesArr[i], xx, canvasHeight - 25); 
-        ctx.beginPath(); 
-        ctx.moveTo(xx, canvasHeight - offset_y - 5); 
-        ctx.lineTo(xx, canvasHeight - offset_y + 5); 
-        ctx.stroke();
-    }
+}
 
-    // draw points
+function axisesValuesX() {
+    ctx.textAlign = "center"
+    const xArrLength = xValuesArr.length;
+    for (let i = 0; i < xArrLength; i++) {
+        let xx = canvasSettings.offset_x + (stepSizeX * i);
+        ctx.fillText(xValuesArr[i], xx, canvasSettings.height - 25); 
+        ctx.beginPath(); 
+        ctx.moveTo(xx, canvasSettings.height - canvasSettings.offset_y - 5); 
+        ctx.lineTo(xx, canvasSettings.height - canvasSettings.offset_y + 5); 
+        ctx.stroke();
+    }
+}
+
+function drawPoints(objectsGaussArr) {
     ctx.fillStyle = "blue";
     for (let step of objectsGaussArr) {
         ctx.beginPath();
         ctx.arc(step.x, step.y, 5, 0, Math.PI * 2, true);
         ctx.fill();
     }
+}
 
-    // draw lines
+function drawLines(objectsGaussArr) {
     ctx.strokeStyle = 'blue'; 
     ctx.lineWidth = 2.0;
     ctx.beginPath();
     ctx.moveTo((objectsGaussArr[0].x), objectsGaussArr[0].y);
-    for(let i = 0; i < objectsGaussArr.length - 1; i++) {
+    const objGaussArrLength = objectsGaussArr.length;
+    for(let i = 0; i < objGaussArrLength - 1; i++) {
         let x_mid = (objectsGaussArr[i].x + objectsGaussArr[i + 1].x) / 2;
         let y_mid = (objectsGaussArr[i].y + objectsGaussArr[i + 1].y) / 2;
         let cp_x1 = (x_mid + objectsGaussArr[i].x) / 2;
@@ -142,14 +172,15 @@ function drawGraph(object) {
         ctx.quadraticCurveTo(cp_x1, objectsGaussArr[i].y, x_mid, y_mid);
         ctx.quadraticCurveTo(cp_x2, objectsGaussArr[i + 1].y, objectsGaussArr[i + 1].x, objectsGaussArr[i + 1].y);
     }
-    ctx.stroke();
 }
 
 function getNewNumber() {
     let num = +inputNumbers.value;
     if (!isNaN(num) && num > 0 && isFinite(num) && num < 10000000) {
         objRandNumbersSize = Math.ceil(num);
-    } else inputNumbers.value = objRandNumbersSize;
+    } else {
+        inputNumbers.value = objRandNumbersSize;
+    }
 }
 
 function updateObjectGauss() {
