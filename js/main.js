@@ -15,20 +15,29 @@ const canvasSettings = {
 };
 
 let minValueX = -10;
-let maxValueX = 10;  // 91 setProbability(object)
+let maxValueX = 10;
 let minValueY = 0;
 let maxValueY = 1;
 let x_steps = 20;
 let y_steps = 20;
-let xValuesArr = []; // 139 axisesValuesX()
-for (let i = minValueX; i <= maxValueX; i++)
-    xValuesArr.push(i);
-let yValuesArr = []; // axisesValuesY()
-for (let i = 0; i <= y_steps; i++)
-    yValuesArr.push(+(((maxValueY - minValueY) / y_steps) * i).toFixed(2));
-let stepSizeX = (canvasSettings.width - canvasSettings.offset_x * 2) / x_steps;   // 91 setProbability(object), 139 axisesValuesX()
-let stepSizeY = (canvasSettings.height - canvasSettings.offset_y * 2) / y_steps;  // 126 axisesValuesY()
-let pixelY = ((maxValueY - minValueY) / y_steps) / stepSizeY;                     // 91 setProbability(object)
+
+let xValuesArr = [];
+let yValuesArr = [];
+let stepSizeX, stepSizeY, pixelY;
+
+const setCanvasValues = function() {
+
+    for (let i = minValueX; i <= maxValueX; i++)
+        xValuesArr.push(i);
+
+    for (let i = 0; i <= y_steps; i++)
+        yValuesArr.push(+(((maxValueY - minValueY) / y_steps) * i).toFixed(2));
+
+    stepSizeX = (canvasSettings.width - canvasSettings.offset_x * 2) / x_steps;
+    stepSizeY = (canvasSettings.height - canvasSettings.offset_y * 2) / y_steps;
+    pixelY = ((maxValueY - minValueY) / y_steps) / stepSizeY;
+
+}();
 
 canvas.width = canvasSettings.width;
 canvas.height = canvasSettings.height;
