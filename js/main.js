@@ -12,7 +12,7 @@ let validNumbers = true;
 function testInput(title, value) {
     let num = +value;
     if (isFinite(num) && !isNaN(num) && Number.isInteger(num)) {
-        if (title == 'range nunber 1') {
+        if (title === 'range nunber 1') {
             rangeNunber1 = BigInt(num);
             if (rangeNunber2 == +inputNum2.value) {
                 validNumbers = true;
