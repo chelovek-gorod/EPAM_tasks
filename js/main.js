@@ -73,10 +73,8 @@ function range(min, max) {
         if (max < 0) {
             let maxRange = max * -1n;
             return (getSum(minRange) - getSum(maxRange -1n)) * -1n;
-        } else {
-            return getSum(max) + getSum(minRange) * -1n;
         }
-    } else {
-        return getSum(max) - getSum(min - 1n);
+        return getSum(max) + getSum(minRange) * -1n;
     }
+    return getSum(max) - getSum(min - 1n);
 }
