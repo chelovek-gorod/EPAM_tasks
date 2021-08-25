@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     color: #ffffff;
-    text-shadow: 0px 0px 7px #00ff00;
+    text-shadow: 0 0 7px #00ff00;
     background-color: #ffff00;
     background-image: url(../images/function.png);
     background-position: center;
@@ -36,7 +36,7 @@ input {
 
 #result {
     margin: 5px auto;
-    padding: 4px 4px 0px;
+    padding: 4px 4px 0;
     width: 330px;
     min-height: 22px;
     font-size: 18px;
@@ -51,7 +51,7 @@ input {
 }
 
 .error {
-    text-shadow: 0px 0px 7px #ff0000;
+    text-shadow: 0 0 7px #ff0000;
 }
 
 button {
@@ -67,10 +67,10 @@ button {
     color: #ffffff;
     background-color: #000000;
     border: none;
-    box-shadow: 0px 0px 6px 2px #00ff00;
+    box-shadow: 0 0 6px 2px #00ff00;
     transition: color ease-in-out 0.3s, box-shadow ease-in-out 0.3s, top ease-in-out 0.3s;}
 button:hover {
     color: #00ff00;
-    box-shadow: 0px 3px 12px 4px #00ff00;
+    box-shadow: 0 3px 12px 4px #00ff00;
     top: -3px;
 }
