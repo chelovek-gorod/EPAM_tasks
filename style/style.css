@@ -39,6 +39,7 @@ input {
     padding: 4px 4px 0;
     width: 330px;
     min-height: 22px;
+    word-wrap: break-word;
     font-size: 18px;
     font-weight: 600;
     color: #000000;
