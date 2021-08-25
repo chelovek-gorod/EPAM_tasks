@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Creating new object</title>
+        <meta name="description" content="Creating new object by summing properties of selected objects">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style/style.css?123" type="text/css">
+
+        <link rel="icon" href="favicon.png"> <!--32х32-->
+
+        <link rel="apple-touch-icon" href="icons/touch-icon-iphone.png"> <!--60х60-->
+        <link rel="apple-touch-icon" sizes="76x76" href="icons/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="icons/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="icons/touch-icon-ipad-retina.png">
+    </head>
+    <body>
+        <h1>Function2</h1>
+        <div class="container">
+            <div class="title">Input data</div>
+            <label>
+                range nunber 1 :
+                <input type="number" id="inputNum1" value="10" size="20" onchange="testInput('range nunber 1', this.value);"></input>
+            </label>
+            <label>
+                range nunber 2 :
+                <input type="number" id="inputNum2" value="10" size="20" onchange="testInput('range nunber 2', this.value);"></input>
+            </label>
+            <button id="btnCalc" onclick="getRangeNumbers();">Calculate</button>
+            <div class="title">Result</div>
+            <div id="result"></div>
+        </div>
+        <script src="js/main.js"></script>
+    </body>
+</html>

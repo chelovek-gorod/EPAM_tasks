@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 7px #00ff00;
+    background-color: #ffff00;
+    background-image: url(../images/function.png);
+    background-position: center;
+}
+
+.container {
+    width: 360px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.title {
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+label {
+    display: block;
+    padding: 4px;
+    font-size: 18px;
+    font-weight: 400;
+    text-shadow: none;
+}
+
+input {
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+#result {
+    margin: 5px auto;
+    padding: 4px 4px 0;
+    width: 330px;
+    min-height: 22px;
+    word-wrap: break-word;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    background-color: #ffffff;
+    border-width: 2px;
+    border-style: inset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 8px;
+}
+
+.error {
+    text-shadow: 0 0 7px #ff0000;
+}
+
+button {
+    position: relative;
+    top: 0;
+    margin: 12px 0 16px;
+    width: 340px;
+    font-size: 18px;
+    padding: 4px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    box-shadow: 0 0 6px 2px #00ff00;
+    transition: color ease-in-out 0.3s, box-shadow ease-in-out 0.3s, top ease-in-out 0.3s;}
+button:hover {
+    color: #00ff00;
+    box-shadow: 0 3px 12px 4px #00ff00;
+    top: -3px;
+}
