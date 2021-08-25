@@ -12,7 +12,7 @@ function btnOnclick() {
     let string = inputString.value;
     if (checkboxSort.checked) {
         let tempArr = string.split('');
-        tempArr.sort();
+        tempArr.sort(function(a,b){return a.localeCompare(b);});
         string = tempArr.join('');
     }
     generateString("", string);
