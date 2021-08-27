@@ -11,11 +11,15 @@ function btnOnclick() {
     resultDiv.style.height += '40px'
     let string = inputString.value;
     if (checkboxSort.checked) {
-        let tempArr = string.split('');
-        tempArr.sort(function(a,b){return a.localeCompare(b);});
-        string = tempArr.join('');
+        string = sortByOrder(string);
     }
     generateString("", string);
+}
+
+function sortByOrder(string) {
+    let tempArr = string.split('');
+    tempArr.sort(function(a,b){return a.localeCompare(b);});
+    return tempArr.join('');
 }
 
 function generateString(prefix, string) {
