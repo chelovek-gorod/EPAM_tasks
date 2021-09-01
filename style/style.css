@@ -1,0 +1,255 @@
+@font-face { font-family: Roboto-Black; src: url('Roboto-Black.ttf'); }
+@font-face { font-family: Roboto-Regular; src: url('Roboto-Regular.ttf'); }
+
+body {
+    font-family: Roboto-Regular, Arial, sans-serif;
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    background-image: url(../images/bg.svg);
+    background-size: 400px;
+    /**/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+}
+
+#container {
+    position: relative;
+    margin: 20px auto;
+    width: 640px;
+}
+
+h1 {
+    font-family: Roboto-Black;
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+b {
+    font-family: Roboto-Black;
+}
+
+.bar-container {
+    position: relative;
+    background: #ffffff;
+    border: solid 2px #000000;
+}
+
+.bookmark {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background: linear-gradient(#cccccc, #ffffff);
+    border-radius: 40px 40px 0 0;
+    top: -52px;
+    border: solid 2px #000000;
+    border-bottom: none;
+}
+
+.bookmark-hover {
+    height: 48px;
+    background-image: linear-gradient(#cccccc, #cccccc);
+    cursor: pointer;
+}
+
+.bar {
+    display: none;
+}
+
+.bar-open {
+    display: block;
+}
+
+#boxes-bookmark {
+    left: -2px;
+}
+#stuffs-bookmark {
+    right: -2px;
+}
+#boxes-bookmark img {
+    width: 40px;
+}
+#stuffs-bookmark img {
+    width: 30px;
+}
+
+.bookmark img {
+    margin-top: 10px;
+}
+
+.bookmark-hover img {
+    opacity: .4;
+    transition: opacity .3s ease-in-out;
+}
+
+.bookmark-hover:hover img {
+    opacity: 1;
+}
+
+.box-slots,
+.stuff-slots,
+.user-slots {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.slot {
+    position: relative;
+    top: 0;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    border: solid 2px #ffffff;
+    border-radius: 10px;
+    transition: top .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+.slot:hover {
+    top: -3px;
+    box-shadow: 0 3px 6px 3px #999999;
+}
+.slot.selected {
+    top: -3px;
+    border: solid 2px #000000;
+    box-shadow: 0 3px 6px 3px #999999;
+}
+
+#boxes-bar .slot-img {
+    margin: 20px 0 0 0;
+    height: 80px;
+}
+
+#stuffs-bar .slot-img {
+    margin: 20px 10px;
+    height: 60px;
+}
+
+#users-bar .slot-img {
+    margin: 10px;
+    height: 100px;
+}
+
+.slot-title {
+    height: 30px;
+    margin: 5px;
+    font-family: Roboto-Black;
+}
+
+.slot-decription {
+    color: #999999;
+    height: 25px;
+}
+
+.slot-decription img {
+    height: 20px;
+    margin-bottom: -4px;
+    color: #999999;
+}
+
+.boxes-text,
+.boxes-btns {
+    flex: 4;
+}
+
+.boxes-text,
+.stuffs-text {
+    font-size: 20px;
+}
+
+.stuffs-text, .stuffs-btns {
+    flex: 5;
+}
+
+.hide-img {
+    width: 0;
+}
+
+button {
+    position: relative;
+    width: 260px;
+    font-size: 20px;
+    top: 0;
+    margin: 20px;
+    padding: 8px;
+    border-radius: 8px;
+    /*font-weight: 600;*/
+    font-family: Roboto-Black;
+    color: #ffffff;
+    border: none;
+    background-color: #999999;
+}
+button.clickable {
+    cursor: pointer;
+    background-color: #000000;
+    transition: top .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+button.clickable:hover {
+    top: -3px;
+    box-shadow: 0 3px 6px 3px #999999;
+}
+
+.shell-div {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffcc;
+    opacity: 0;
+    transition: opacity .6s ease-in-out;
+}
+
+.shell-show {
+    opacity: 1;
+}
+
+.shell-container {
+    background-color: #ffffff;
+    width: 300px;
+    margin: 120px auto;
+    padding: 20px;
+    border: solid 2px #000000;
+    border-radius: 20px;
+}
+
+#shell-Title{
+    font-size: 20px;
+}
+
+#boxesShell,
+#usersShell {
+    display: none;
+}
+
+.shell-item {
+    position: relative;
+    padding: 10px;
+    margin: 12px;
+    top: 0;
+    cursor: pointer;
+    border: solid 2px #000000;
+    border-radius: 20px; 
+    transition: top .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.shell-item:hover {
+    top: -3px;
+    box-shadow: 0 3px 6px 3px #999999;
+}
+
+.shell-item img {
+    height: 30px;
+    margin: 0 10px -10px 0;
+}
+
+#cancelBtn {
+    color: #ffffff;
+    background-color: #000000;
+}
