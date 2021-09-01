@@ -256,7 +256,7 @@ function updateUsersUI(i) {
         document.getElementById(i.name + 'BoxText').innerHTML = 'with BOX ' + i.box.name.match(/\d+/)[0];
         if (i.box.stuff.length)  document.getElementById(i.name + 'StuffImg').classList.remove('hide-img');
         else document.getElementById(i.name + 'StuffImg').classList.add('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'box staff size = ' + i.box.stuff.length;
+        document.getElementById(i.name + 'StuffText').innerHTML = 'box stuff size = ' + i.box.stuff.length;
     } else {
         document.getElementById(i.name + 'BoxImg').classList.add('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'no box';
@@ -268,10 +268,10 @@ function updateUsersUI(i) {
 function updateBoxesUI(i) {
     if (i.stuff.length) {
         document.getElementById(i.name + 'StuffImg').classList.remove('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'staff in = ' + i.stuff.length;
+        document.getElementById(i.name + 'StuffText').innerHTML = 'stuff in = ' + i.stuff.length;
     } else {
         document.getElementById(i.name + 'StuffImg').classList.add('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'staff empty';
+        document.getElementById(i.name + 'StuffText').innerHTML = 'stuff empty';
     }
     if (i.owner) {
         document.getElementById(i.name + 'UserImg').classList.remove('hide-img');
