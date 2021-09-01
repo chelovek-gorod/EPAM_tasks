@@ -213,9 +213,6 @@ const shell = {
         setTimeout(() => this.div.classList.add('shell-show'),10);
     },
     hide: function() {
-        document.getElementById(selectedSlot).classList.remove('selected');
-        selectedSlot = '';
-        buttons.reset();
         this.div.classList.remove('shell-show');
         setTimeout(() => {
             this.div.style.display = 'none';
@@ -233,21 +230,23 @@ function cancelShell() {
 }
 
 function clickShell(id) {
-    shell.activ = false;
-    let active = parseDivId(selectedSlot);
-    let selected = parseDivId(id);
-    if (active.type === 'box') {
-        let user = usersArr[selected.number-1];
-        let box = boxesArr[active.number-1];
-        user.addBox(box);
+    if (shell.activ) {
+        shell.activ = false;
+        let active = parseDivId(selectedSlot);
+        let selected = parseDivId(id);
+        if (active.type === 'box') {
+            let user = usersArr[selected.number-1];
+            let box = boxesArr[active.number-1];
+            user.addBox(box);
+        }
+        if (active.type === 'stuff') {
+            let box = boxesArr[selected.number-1];
+            let stuff = stuffsArr[active.number-1];
+            box.addStuff(stuff);
+        }
+        resetUI();
+        shell.hide();
     }
-    if (active.type === 'stuff') {
-        let box = boxesArr[selected.number-1];
-        let stuff = stuffsArr[active.number-1];
-        box.addStuff(stuff);
-    }
-    updateUI();
-    shell.hide();
 }
 
 function updateUsersUI(i) {
@@ -296,5 +295,7 @@ function updateStuffsUI(i) {
     } else {
         document.getElementById(i.name + 'BoxImg').classList.add('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'no box';
+        document.getElementById(i.name + 'UserImg').classList.add('hide-img');
+        document.getElementById(i.name + 'UserText').innerHTML = 'no user';
     }
 }
