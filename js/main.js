@@ -11,7 +11,6 @@ class Stuff extends Entity {
         super(name);
         this.box = null;
     }
-
 }
 
 class Box extends Entity {
@@ -22,7 +21,7 @@ class Box extends Entity {
     }
 
     addStuff(stuff) {
-        if (stuff.box) stuff.box.remuveStuff(stuff);
+        if (stuff.box) stuff.box.removeStuff(stuff);
         let index = this.stuff.indexOf(stuff);
         if (!~index) {
             this.stuff.push(stuff);
@@ -30,7 +29,7 @@ class Box extends Entity {
         }
     }
 
-    remuveStuff(stuff) {
+    removeStuff(stuff) {
         let index = this.stuff.indexOf(stuff);
         if (~index) {
             this.stuff.splice(index, 1);
@@ -47,7 +46,7 @@ class User extends Entity {
 
     addBox(box) {
         if (this.box) {
-            this.remuveBox(this.box);
+            this.removeBox(this.box);
         }
         let previousUser = box.owner;
         if (previousUser) previousUser.box = null;
@@ -55,7 +54,7 @@ class User extends Entity {
         this.box = box;
     }
 
-    remuveBox(box) {
+    removeBox(box) {
         if (this.box) {
             box.owner = null;
             this.box = null;
@@ -138,10 +137,8 @@ const buttons = {
         }
     },
     reset: function() {
-        btnSetUser.classList.remove('clickable');
-        btnUnsetUser.classList.remove('clickable');
-        btnPutInBox.classList.remove('clickable');
-        btnOutputFromBox.classList.remove('clickable');
+        [btnSetUser, btnUnsetUser, btnPutInBox, btnOutputFromBox]
+            .forEach(btn => btn.classList.remove('clickable'))
     }
 };
 
@@ -168,7 +165,7 @@ function btnOnclick(btn) {
             case 'btnUnsetUser' :
                 box = boxesArr[active.number-1];
                 user = box.owner;
-                user.remuveBox(box);
+                user.removeBox(box);
                 resetUI();
                 break;
             case 'btnPutInBox' :
@@ -179,7 +176,7 @@ function btnOnclick(btn) {
             case 'btnOutputFromBox' :
                 stuff = stuffsArr[active.number-1];
                 box = stuff.box;
-                box.remuveStuff(stuff);
+                box.removeStuff(stuff);
                 resetUI();
                 break;
         }
