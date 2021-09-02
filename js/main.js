@@ -247,52 +247,36 @@ function clickShell(id) {
 }
 
 function updateUsersUI(i) {
+    document.getElementById(i.name + 'BoxImg').classList.toggle('hide-img', !i.box);
+    document.getElementById(i.name + 'StuffImg').classList.toggle('hide-img', i.box ? !i.box.stuff.length : true);
     if (i.box) {
-        document.getElementById(i.name + 'BoxImg').classList.remove('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'with BOX ' + i.box.name.match(/\d+/)[0];
-        if (i.box.stuff.length)  document.getElementById(i.name + 'StuffImg').classList.remove('hide-img');
-        else document.getElementById(i.name + 'StuffImg').classList.add('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'box stuff size = ' + i.box.stuff.length;
+        if (i.box.stuff.length) document.getElementById(i.name + 'StuffText').innerHTML = 'box stuff size = ' + i.box.stuff.length;
+        else document.getElementById(i.name + 'StuffText').innerHTML = 'box empty';
     } else {
-        document.getElementById(i.name + 'BoxImg').classList.add('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'no box';
-        document.getElementById(i.name + 'StuffImg').classList.add('hide-img');
         document.getElementById(i.name + 'StuffText').innerHTML = '';
-    }
+    }    
 }
 
 function updateBoxesUI(i) {
-    if (i.stuff.length) {
-        document.getElementById(i.name + 'StuffImg').classList.remove('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'stuff in = ' + i.stuff.length;
-    } else {
-        document.getElementById(i.name + 'StuffImg').classList.add('hide-img');
-        document.getElementById(i.name + 'StuffText').innerHTML = 'stuff empty';
-    }
-    if (i.owner) {
-        document.getElementById(i.name + 'UserImg').classList.remove('hide-img');
-        document.getElementById(i.name + 'UserText').innerHTML = 'USER ' + i.owner.name.match(/\d+/)[0];
-    } else {
-        document.getElementById(i.name + 'UserImg').classList.add('hide-img');
-        document.getElementById(i.name + 'UserText').innerHTML = 'no user';
-    }
+    document.getElementById(i.name + 'StuffImg').classList.toggle('hide-img', !i.stuff.length);
+    document.getElementById(i.name + 'UserImg').classList.toggle('hide-img', !i.owner);
+    if (i.stuff.length) document.getElementById(i.name + 'StuffText').innerHTML = 'stuff in = ' + i.stuff.length;
+    else document.getElementById(i.name + 'StuffText').innerHTML = 'box empty';
+    if (i.owner) document.getElementById(i.name + 'UserText').innerHTML = 'USER ' + i.owner.name.match(/\d+/)[0];
+    else document.getElementById(i.name + 'UserText').innerHTML = 'no user';
 }
 
 function updateStuffsUI(i) {
+    document.getElementById(i.name + 'BoxImg').classList.toggle('hide-img', !i.box);
+    document.getElementById(i.name + 'UserImg').classList.toggle('hide-img', i.box ? !i.box.owner : true);
     if (i.box) {
-        document.getElementById(i.name + 'BoxImg').classList.remove('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'BOX ' + i.box.name.match(/\d+/)[0];
-        if (i.box.owner) {
-            document.getElementById(i.name + 'UserImg').classList.remove('hide-img');
-            document.getElementById(i.name + 'UserText').innerHTML = 'USER ' + i.box.owner.name.match(/\d+/)[0];
-        } else {
-            document.getElementById(i.name + 'UserImg').classList.add('hide-img');
-            document.getElementById(i.name + 'UserText').innerHTML = 'no user';
-        }
+        if (i.box.owner) document.getElementById(i.name + 'UserText').innerHTML = 'USER ' + i.box.owner.name.match(/\d+/)[0];
+        else document.getElementById(i.name + 'UserText').innerHTML = 'no user';
     } else {
-        document.getElementById(i.name + 'BoxImg').classList.add('hide-img');
         document.getElementById(i.name + 'BoxText').innerHTML = 'no box';
-        document.getElementById(i.name + 'UserImg').classList.add('hide-img');
         document.getElementById(i.name + 'UserText').innerHTML = 'no user';
     }
 }
