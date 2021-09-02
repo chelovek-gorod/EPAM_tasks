@@ -135,6 +135,10 @@ b {
     height: 100px;
 }
 
+.user {
+    width: 30%;
+}
+
 .slot-title {
     height: 30px;
     margin: 5px;
