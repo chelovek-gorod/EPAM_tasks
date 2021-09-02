@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Sweet sugar</title>
+        <meta name="description" content="Every box belongs to user and can store some stuff">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style/style.css?123" type="text/css">
+
+        <link rel="icon" href="favicon.png"> <!--32х32-->
+
+        <link rel="apple-touch-icon" href="icons/touch-icon-iphone.png"> <!--60х60-->
+        <link rel="apple-touch-icon" sizes="76x76" href="icons/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="icons/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="icons/touch-icon-ipad-retina.png">
+    </head>
+    <body>
+        <div id="container">
+
+            <h1>Sweet sugar</h1>
+
+            <div class="bar-container">
+
+                <div id="boxes-bookmark" class="bookmark" onclick="clickBookmark('boxes')">
+                    <img src="images/box.svg">
+                </div>
+
+                <div id="stuffs-bookmark" class="bookmark bookmark-hover" onclick="clickBookmark('stuffs')">
+                    <img src="images/stuff.svg">
+                </div>
+
+                <div id="boxes-bar" class="bar bar-open">
+                    <div class="box-slots">
+                        <div id="box1Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/box.svg">
+                            <div class="slot-title">BOX 1</div>
+                            <div class="slot-decription">
+                                <img id="box1StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                                <span id="box1StuffText">stuff empty</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="box1UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="box1UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="box2Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/box.svg">
+                            <div class="slot-title">BOX 2</div>
+                            <div class="slot-decription">
+                                <img id="box2StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                                <span id="box2StuffText">stuff empty</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="box2UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="box2UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="box3Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/box.svg">
+                            <div class="slot-title">BOX 3</div>
+                            <div class="slot-decription">
+                                <img id="box3StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                                <span id="box3StuffText">stuff empty</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="box3UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="box3UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="box4Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/box.svg">
+                            <div class="slot-title">BOX 4</div>
+                            <div class="slot-decription">
+                                <img id="box4StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                                <span id="box4StuffText">stuff empty</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="box4UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="box4UserText">no user</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxes-text">
+                        Select any box and click the button to do action
+                    </div>
+                    <div class="boxes-btns">
+                        <button id="btnSetUser" onclick="btnOnclick(this);">Set new user</button>
+                        <button id="btnUnsetUser" onclick="btnOnclick(this);">Get rid of user</button>
+                    </div>
+                </div>
+
+                <div id="stuffs-bar" class="bar">
+                    <div class="stuff-slots">
+                        <div id="stuff1Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/stuff.svg">
+                            <div class="slot-title">STUFF 1</div>
+                            <div class="slot-decription">
+                                <img id="stuff1BoxImg" class="hide-img" src="images/box_gray.svg">
+                                <span id="stuff1BoxText">no box</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="stuff1UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="stuff1UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="stuff2Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/stuff.svg">
+                            <div class="slot-title">STUFF 2</div>
+                            <div class="slot-decription">
+                                <img id="stuff2BoxImg" class="hide-img" src="images/box_gray.svg">
+                                <span id="stuff2BoxText">no box</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="stuff2UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="stuff2UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="stuff3Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/stuff.svg">
+                            <div class="slot-title">STUFF 3</div>
+                            <div class="slot-decription">
+                                <img id="stuff3BoxImg" class="hide-img" src="images/box_gray.svg">
+                                <span id="stuff3BoxText">no box</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="stuff3UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="stuff3UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="stuff4Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/stuff.svg">
+                            <div class="slot-title">STUFF 4</div>
+                            <div class="slot-decription">
+                                <img id="stuff4BoxImg" class="hide-img" src="images/box_gray.svg">
+                                <span id="stuff4BoxText">no box</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="stuff4UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="stuff4UserText">no user</span>
+                            </div>
+                        </div>
+                        <div id="stuff5Div" class="slot" onclick="clickSlot(this)">
+                            <img class="slot-img" src="images/stuff.svg">
+                            <div class="slot-title">STUFF 5</div>
+                            <div class="slot-decription">
+                                <img id="stuff5BoxImg" class="hide-img" src="images/box_gray.svg">
+                                <span id="stuff5BoxText">no box</span>
+                            </div>
+                            <div class="slot-decription">
+                                <img id="stuff5UserImg" class="hide-img" src="images/user_gray.svg">
+                                <span id="stuff5UserText">no user</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stuffs-text">
+                        Select any stuff and click the button to do action
+                    </div>
+                    <div class="stuffs-btns">
+                        <button id="btnPutInBox" onclick="btnOnclick(this);">Put in box</button>
+                        <button id="btnOutputFromBox" onclick="btnOnclick(this);">Take out from box</button>
+                    </div>
+                </div>
+
+            </div>
+           
+            <div id="users-bar">
+                <div class="user-slots">
+                    <div class="user">
+                        <img class="slot-img" src="images/user.svg">
+                        <div class="slot-title">USER 1</div>
+                        <div class="slot-decription">
+                            <img id="user1BoxImg" class="hide-img" src="images/box_gray.svg">
+                            <span id="user1BoxText">no box</span>
+                        </div>
+                        <div class="slot-decription">
+                            <img id="user1StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                            <span id="user1StuffText"></span>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <img class="slot-img" src="images/user.svg">
+                        <div class="slot-title">USER 2</div>
+                        <div class="slot-decription">
+                            <img id="user2BoxImg" class="hide-img" src="images/box_gray.svg">
+                            <span id="user2BoxText">no box</span>
+                        </div>
+                        <div class="slot-decription">
+                            <img id="user2StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                            <span id="user2StuffText"></span>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <img class="slot-img" src="images/user.svg">
+                        <div class="slot-title">USER 3</div>
+                        <div class="slot-decription">
+                            <img id="user3BoxImg" class="hide-img" src="images/box_gray.svg">
+                            <span id="user3BoxText">no box</span>
+                        </div>
+                        <div class="slot-decription">
+                            <img id="user3StuffImg" class="hide-img" src="images/stuff_gray.svg">
+                            <span id="user3StuffText"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="shell" class="shell-div">
+            <div class="shell-container">
+                <div id="shell-Title"></div>
+                <div id="boxesShell">
+                    <div id="box1Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/box.svg">BOX 1</div>
+                    <div id="box2Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/box.svg">BOX 2</div>
+                    <div id="box3Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/box.svg">BOX 3</div>
+                    <div id="box4Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/box.svg">BOX 4</div>
+                </div>
+                <div id="usersShell">
+                    <div id="user1Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/user.svg">USER 1</div>
+                    <div id="user2Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/user.svg">USER 2</div>
+                    <div id="user3Btn" class="shell-item" onclick="clickShell(this.id)"><img src="images/user.svg">USER 3</div>
+                </div>
+                <div id="cancelBtn" class="shell-item" onclick="cancelShell()">CANCEL</div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
