@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru_RU">
+    <head>
+        <meta charset="UTF-8">
+
+        <title>Agent Smith</title>
+        <meta name="description" content="Every box belongs to user and can store some stuff">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="style/style.css?123" type="text/css">
+
+        <link rel="icon" href="favicon.png"> <!--32х32-->
+
+        <link rel="apple-touch-icon" href="icons/touch-icon-iphone.png"> <!--60х60-->
+        <link rel="apple-touch-icon" sizes="76x76" href="icons/touch-icon-ipad.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="icons/touch-icon-iphone-retina.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="icons/touch-icon-ipad-retina.png">
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="radio-wrapper">
+                <label class="selected">
+                    <input id="rOne" type="radio" name="dimensional" value="one" onclick="arrayType.switch();" checked>
+                    <span>one-dimensional</span>
+                </label>
+                <label>
+                    <input id="rTwo" type="radio" name="dimensional" value="two" onclick="arrayType.switch();">
+                    <span>two-dimensional</span>
+                </label>
+            </div>
+
+            <div class="array-result-wrapper">
+
+                <div class="array-wrapper">
+                    <div class="title">array</div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                        <div class="hide-line hide"></div>
+                    </div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                    </div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                        <div class="hide-line hide"></div>
+                    </div>
+                </div>
+
+                <div class="arrow"></div>
+
+                <div class="result-wrapper">
+                    <div class="title">result</div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                        <div class="hide-line hide"></div>
+                    </div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                    </div>
+                    <div class="line">
+                        <div class="ceil"></div><div class="ceil"></div><div class="ceil"></div><div class="ceil"></div>
+                        <div class="hide-line hide"></div>
+                    </div>
+                </div>
+            
+            </div>
+
+            <button id="btnGenerate" onclick="generateArray();">generate</button>
+
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
