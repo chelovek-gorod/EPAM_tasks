@@ -1,0 +1,70 @@
+@font-face { font-family: Roboto-Regular; src: url('Roboto-Regular.ttf'); }
+
+body {
+    font-family: Roboto-Regular, Arial, sans-serif;
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    /**/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+}
+
+.container {
+    width: 434px;
+    margin: 60px auto;
+    opacity: 1;
+    animation-duration: 2.4s;
+    animation-name: addOpacity;
+}
+@keyframes addOpacity {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.header {
+    margin-bottom: 10px;
+    font-size: 70px;
+    font-weight: 700;
+}
+
+#board, b {
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.ceil {
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    font-size: 120px;
+    line-height: 120px;
+    border: solid 1px #000000;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: color .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.winner {
+    color: #ffffff;
+    background-color: #000000;
+}
+
+#output {
+    font-size: 60px;
+    color: #555555;
+}
