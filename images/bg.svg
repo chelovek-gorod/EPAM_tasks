@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="1641px" height="1254px" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 226.246 172.858"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:none}
+    .fil0 {fill:#E6E6E6}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <path d="M0 0l226.246 0 0 172.858 -226.246 0 0 -172.858z"/>
+   </clipPath>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g>
+  </g>
+  <g style="clip-path:url(#id0)">
+   <g>
+    <rect class="fil0" transform="matrix(0.289127 -0.626262 0.626262 0.289127 123.779 43.1071)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.502834 -1.08916 1.08916 0.502834 52.4365 42.1828)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.166873 -0.361454 0.361454 0.166873 108.737 11.3666)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.166873 -0.361454 0.361454 0.166873 -0.690016 36.9094)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.502834 -1.08916 1.08916 0.502834 174.79 71.4471)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.289127 -0.626262 0.626262 0.289127 10.6564 129.536)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.166873 -0.361454 0.361454 0.166873 -4.38591 97.7955)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.502834 -1.08916 1.08916 0.502834 61.6668 157.876)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.502834 -1.08916 1.08916 0.502834 165.559 128.612)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.166873 -0.361454 0.361454 0.166873 221.86 97.7955)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+    <rect class="fil0" transform="matrix(0.166873 -0.361454 0.361454 0.166873 112.433 123.338)" width="33.356" height="33.356" rx="4.135" ry="4.135"/>
+   </g>
+  </g>
+  <polygon class="fil1" points="0,0 226.246,0 226.246,172.858 0,172.858 "/>
+ </g>
+</svg>

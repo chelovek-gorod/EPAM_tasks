@@ -1,0 +1,145 @@
+@font-face { font-family: Roboto-Black; src: url('Roboto-Black.ttf'); }
+
+body {
+    font-family: Roboto-Black, Arial, sans-serif;
+    text-align: center;
+    color: #000000;
+    background-color: #ffffff;
+    background-image: url(../images/bg.svg);
+    background-size: 400px;
+    overflow-y: scroll;
+    /**/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;           /* Non-prefixed version, currently
+                                not supported by any browser */
+}
+
+#container {
+    position: relative;
+    margin: 60px auto;
+    width: 840px;
+    min-height: 600px;
+}
+
+.keyBoard {
+    position: absolute;
+    left: 225px;
+    top: 0;
+    width: 500px;
+    height: 300px;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+}
+
+.blocked {
+    opacity: .3;
+}
+
+.key {
+    width: 80px;
+    height: 80px;
+    color: #000000;
+    font-size: 48px;
+    line-height: 80px;
+    background-color: #B3B3B3;
+    border: solid 5px #4D4D4D;
+    border-radius: 10px;
+}
+
+.keyBoard .key {
+    position: absolute;
+}
+
+.keyBoard .key:hover {
+    cursor: pointer;
+}
+
+.tempKey {
+    position: absolute;
+    transition: top .3s ease-in;
+}
+
+#mech {
+    position: absolute;
+    right: 100px;
+    bottom: 20px;
+}
+
+#conv {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#stackBefore {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    top: 0px;
+    width: 80px;
+    padding: 20px 0 8px;
+    background-color: #ffffff;
+    border: solid 5px #4D4D4D;
+    border-radius: 10px 10px 0 0;
+}
+#stackBefore span {
+    display: block;
+    font-size: 42px;
+    line-height: 42px;
+}
+
+#stack {
+    position: absolute;
+    left: 0;
+    top: 420px;
+    width: 90px;
+    height: auto;
+    opacity: 1;
+    background-color: #77777777;
+}
+#stack::after {
+    content: '';
+    position: absolute;
+    bottom: -35px;
+    right: 0;
+    width: 80px;
+    height: 25px;
+    font-size: 20px;
+    line-height: 25px;
+    background-color: #ffffff;
+    border: solid 5px #4D4D4D;
+    border-radius: 0 0 10px 10px;
+}
+
+#spalsh {
+    position: absolute;
+    top: 300px;
+    left: -30px;
+    opacity: .5;
+}
+
+#await {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    width: 260px;
+    height: 100px;
+    color: #000000;
+    font-size: 50px;
+    line-height: 100px;
+    text-align: right;
+    padding: 0 30px 0 50px;
+    background-color: #ffffff;
+    border: solid 5px #4D4D4D;
+    border-radius: 12px;
+    background-image: url(../images/await.gif);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 100px;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
