@@ -1,77 +1,35 @@
 "use strict";
 
-class entry {
-    constructor(id, name, age, country) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.country = country;
-    }
+const titles = document.getElementById('titles');
+const categorys = document.getElementById('categorys');
+const result = document.getElementById('result');
+
+let dataStorage;
+
+const url = 'https://api.publicapis.org/'
+const paramCategory = 'entries?category=animals&https=true'
+
+fetch(url + paramCategory)
+    .then(response => response.json())
+    .then(json => getData(json.entries))
+    .catch(err => console.log('Fetch problem: ' + err.message));
+
+function getData(data) {
+    dataStorage = data;
+    data.forEach(e => titles.innerHTML += `<option value="${e.API}">${e.API}</option>`);
 }
 
-const storage = [];
-
-let destinyArr = ['id', 'name', 'age', 'country'];
-
-const input = document.createElement("input");
-input.type = "text";
-input.onblur = () => {
-    let line = input.parentNode.parentNode.getAttribute('r');
-    let dest = input.parentNode.getAttribute('destiny');
-    storage[line][dest] = input.value;
-    input.parentNode.innerHTML = input.value;
-    input.remove();
+function changeTitles() {
+    let object = dataStorage.find(e => e.API === titles.value)
+    categorys.innerHTML = '<option selected value="onload">unset</option>';
+    for (let keys in object) categorys.innerHTML += `<option value="${keys}">${keys}</option>`;
+    categorys.selected = 'unset';
+    result.innerHTML = 'unset';
 }
 
-const table = document.querySelector('table');
-let t_h = table.querySelectorAll('th');
-let t_r = table.querySelectorAll('tr');
-let size = destinyArr.length;
-let deep = t_r.length;
-for (let i = 0; i < size; i++) {
-    t_h[i].setAttribute('destiny',destinyArr[i]);
-    for (let r = 1; r < deep; r++) {
-        if (i === 0) {
-            t_r[r].setAttribute('r', r - 1);
-            storage.push({});
-        }
-        let ceil = t_r[r].querySelectorAll('td')[i]
-        ceil.setAttribute('destiny',destinyArr[i]);
-        storage[r - 1][destinyArr[i]] = ceil.innerHTML;
-    }
-}
-table.addEventListener('click', e => clickOn(e.target));
-
-function clickOn(e) {
-    if (e.tagName == 'TH') dataSort(e.getAttribute('destiny'));
-    if (e.tagName == 'SPAN') dataSort(e.parentNode.getAttribute('destiny'));
-    if (e.tagName == 'TD') dataEntry(e);
-}
-
-function dataSort(dest) {
-    storage.sort((a, b) => {
-        if (a[dest] > b[dest]) {
-            return 1;
-        }
-        if (a[dest] < b[dest]) {
-            return -1;
-        }
-        return 0;
-    });
-    updateTable();
-}
-
-function updateTable() {
-    for (let r = 0; r < deep - 1; r++) {
-        for (let i = 0; i < size; i++) {
-            t_r[r + 1].querySelectorAll('td')[i].innerHTML = storage[r][destinyArr[i]];
-        }
-    }
-}
-
-function dataEntry(e) {
-    input.value = e.innerHTML
-    e.innerHTML = '';
-    e.append(input);
-    input.select();
+function changeCategorys() {
+    let object = dataStorage.find(e => e.API === titles.value);
+    result.innerHTML = (categorys.value == 'Link') ?
+        `<a href="${object[categorys.value]}" target="_blank">${object[categorys.value]}</a>` :
+        object[categorys.value];
 }

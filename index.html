@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
 
-        <title>Table</title>
-        <meta name="description" content="Event listeners">
+        <title>Asia chronicle</title>
+        <meta name="description" content="EPAM home task">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,27 +20,25 @@
     <body>
         <div class="container">
 
-            <table border="1">
-                <caption>Table</caption>
-                <thead>
-                    <th>id <span>&#8645;</span></th>
-                    <th>Name <span>&#8645;</span></th>
-                    <th>Age <span>&#8645;</span></th>
-                    <th>Country <span>&#8645;</span></th>
-                </thead>
-                <tr>
-                    <td>1</td><td>Jack</td><td>27</td><td>USA</td>
-                </tr>
-                <tr>
-                    <td>2</td><td>Boris</td><td>41</td><td>Russia</td>
-                </tr>
-                <tr>
-                    <td>3</td><td>Annette</td><td>32</td><td>France</td>
-                </tr>
-                <tr>
-                    <td>4</td><td>Erika</td><td>19</td><td>Germany</td>
-                </tr>
-            </table>
+            <h1>Asia chronicle</h1>
+
+            <label>Title:
+                <select id="titles" onchange="changeTitles()">
+                    <option selected value="unset">unset</option>
+                </select>
+            </label>
+            
+            <label>Category:
+                <select id="categorys" onchange="changeCategorys()">
+                    <option selected value="unset">unset</option>
+                </select>
+            </label>
+
+            <label>Result:
+                <div id="result">unset</div>
+            </label>
+
+        </div>
 
         <script src="js/main.js"></script>
 

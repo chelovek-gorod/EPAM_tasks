@@ -1,9 +1,9 @@
-# Task10: sweet sugar
+# Asia chronicle
 
-• Add to html page table with header and some rows
+• Develop page with two dropdowns “Title” and “Category”
 
-• Add to header event listener to implement sorting functionality across the table data (alphabetical)
+• Values of selections should invoke render of data from https://api.publicapis.org/
 
-• Add to cells user interaction feature (click and edit text)
+• Handle possible error cases
 
-• Push code to repo “table”
+• Push code to repo “Asia chronicle”
