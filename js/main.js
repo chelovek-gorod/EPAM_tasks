@@ -1,14 +1,5 @@
 "use strict";
 
-class entry {
-    constructor(id, name, age, country) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.country = country;
-    }
-}
-
 const storage = [];
 
 let destinyArr = ['id', 'name', 'age', 'country'];
@@ -16,7 +7,7 @@ let destinyArr = ['id', 'name', 'age', 'country'];
 const input = document.createElement("input");
 input.type = "text";
 input.onblur = () => {
-    let line = input.parentNode.parentNode.getAttribute('r');
+    let line = input.parentNode.parentNode.getAttribute('row');
     let dest = input.parentNode.getAttribute('destiny');
     storage[line][dest] = input.value;
     input.parentNode.innerHTML = input.value;
@@ -24,20 +15,20 @@ input.onblur = () => {
 }
 
 const table = document.querySelector('table');
-let t_h = table.querySelectorAll('th');
-let t_r = table.querySelectorAll('tr');
+let tableHeaders = table.querySelectorAll('th');
+let tableRows = table.querySelectorAll('tr');
 let size = destinyArr.length;
-let deep = t_r.length;
+let deep = tableRows.length;
 for (let i = 0; i < size; i++) {
-    t_h[i].setAttribute('destiny',destinyArr[i]);
-    for (let r = 1; r < deep; r++) {
+    tableHeaders[i].setAttribute('destiny',destinyArr[i]);
+    for (let row = 1; row < deep; row++) {
         if (i === 0) {
-            t_r[r].setAttribute('r', r - 1);
+            tableRows[row].setAttribute('row', row - 1);
             storage.push({});
         }
-        let ceil = t_r[r].querySelectorAll('td')[i]
+        let ceil = tableRows[row].querySelectorAll('td')[i]
         ceil.setAttribute('destiny',destinyArr[i]);
-        storage[r - 1][destinyArr[i]] = ceil.innerHTML;
+        storage[row - 1][destinyArr[i]] = ceil.innerHTML;
     }
 }
 table.addEventListener('click', e => clickOn(e.target));
@@ -62,9 +53,9 @@ function dataSort(dest) {
 }
 
 function updateTable() {
-    for (let r = 0; r < deep - 1; r++) {
+    for (let row = 0; row < deep - 1; row++) {
         for (let i = 0; i < size; i++) {
-            t_r[r + 1].querySelectorAll('td')[i].innerHTML = storage[r][destinyArr[i]];
+            tableRows[row + 1].querySelectorAll('td')[i].innerHTML = storage[row][destinyArr[i]];
         }
     }
 }
