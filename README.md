@@ -1,9 +1,7 @@
-# Asia chronicle
+# Babel
 
-• Develop page with two dropdowns “Title” and “Category”
+• Convert your code from previous HT by the Babel transpiler to ES5 version
 
-• Values of selections should invoke render of data from https://api.publicapis.org/
+• Check working status of app for different browsers
 
-• Handle possible error cases
-
-• Push code to repo “Asia chronicle”
+• Push code to repo “Rome”

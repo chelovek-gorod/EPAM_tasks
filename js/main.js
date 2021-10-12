@@ -4,10 +4,13 @@ const titles = document.getElementById('titles');
 const categorys = document.getElementById('categorys');
 const result = document.getElementById('result');
 
+titles.addEventListener('change', changeTitles);
+categorys.addEventListener('change', changeCategorys);
+
 let dataStorage;
 
-const url = 'https://api.publicapis.org/'
-const paramCategory = 'entries?category=animals&https=true'
+const url = 'https://api.publicapis.org/';
+const paramCategory = 'entries?category=animals&https=true';
 
 fetch(url + paramCategory)
     .then(response => response.json())
@@ -29,7 +32,9 @@ function changeTitles() {
 
 function changeCategorys() {
     let object = dataStorage.find(e => e.API === titles.value);
-    result.innerHTML = (categorys.value == 'Link') ?
-        `<a href="${object[categorys.value]}" target="_blank">${object[categorys.value]}</a>` :
-        object[categorys.value];
+    if (object[categorys.value]) {
+        result.innerHTML = (categorys.value == 'Link') ?
+            `<a href="${object[categorys.value]}" target="_blank">${object[categorys.value]}</a>` :
+            object[categorys.value];
+    } else result.innerHTML = '-empty-';
 }
