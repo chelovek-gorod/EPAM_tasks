@@ -1,40 +1,23 @@
 "use strict";
 
 const titles = document.getElementById('titles');
-const categorys = document.getElementById('categorys');
+const categories = document.getElementById('categories');
 const result = document.getElementById('result');
-
-titles.addEventListener('change', changeTitles);
-categorys.addEventListener('change', changeCategorys);
 
 let dataStorage;
 
-const url = 'https://api.publicapis.org/';
-const paramCategory = 'entries?category=animals&https=true';
+const url = 'https://api.publicapis.org/'
+const paramCategory = 'entries?category=animals&https=true'
+
+const updateSelectsScript = document.createElement('script');
+updateSelectsScript.src = './js/select.js';
 
 fetch(url + paramCategory)
     .then(response => response.json())
-    .then(json => getData(json.entries))
+    .then(json => setData(json.entries))
     .catch(err => console.log('Fetch problem: ' + err.message));
 
-function getData(data) {
+function setData(data) {
     dataStorage = data;
-    data.forEach(e => titles.innerHTML += `<option value="${e.API}">${e.API}</option>`);
-}
-
-function changeTitles() {
-    let object = dataStorage.find(e => e.API === titles.value)
-    categorys.innerHTML = '<option selected value="onload">unset</option>';
-    for (let keys in object) categorys.innerHTML += `<option value="${keys}">${keys}</option>`;
-    categorys.selected = 'unset';
-    result.innerHTML = 'unset';
-}
-
-function changeCategorys() {
-    let object = dataStorage.find(e => e.API === titles.value);
-    if (object[categorys.value]) {
-        result.innerHTML = (categorys.value == 'Link') ?
-            `<a href="${object[categorys.value]}" target="_blank">${object[categorys.value]}</a>` :
-            object[categorys.value];
-    } else result.innerHTML = '-empty-';
+    document.body.append(updateSelectsScript);
 }

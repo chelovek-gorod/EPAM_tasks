@@ -1,7 +1,7 @@
-# Babel
+# multi_module
 
-• Convert your code from previous HT by the Babel transpiler to ES5 version
+• Split your code from previous HM to some modules (at least 2)
 
-• Check working status of app for different browsers
+• Implement dynamic import for module
 
-• Push code to repo “Rome”
+• Push code to repo “multi_module”
