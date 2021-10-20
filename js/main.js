@@ -43,7 +43,7 @@ function setData(data) {
     result.innerHTML = 'unset';
 }
 
-function changeDataList() {
+dataList.onchange = function () {
     let object = dataStorage[dataList.value];
     result.innerHTML = '';
     result.innerHTML += object.Auth ? `<span>Auth :</span> ${object.Auth} <br>` : '';
