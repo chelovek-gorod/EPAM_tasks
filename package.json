@@ -1,19 +1,17 @@
 {
-  "name": "EPAM_task_13_babel",
+  "name": "EPAM_tasks-Rome",
   "version": "1.0.0",
   "description": "• Convert your code from previous HT by the Babel transpiler to ES5 version",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "build": "webpack"
+    "build": "babel js -d build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
-    "babel-loader": "^8.2.2",
-    "webpack": "^5.58.1",
-    "webpack-cli": "^4.9.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
