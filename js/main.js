@@ -1,23 +1,58 @@
 "use strict";
 
-const titles = document.getElementById('titles');
 const categories = document.getElementById('categories');
+const dataList = document.getElementById('dataList');
 const result = document.getElementById('result');
 
 let dataStorage;
+let categoriesReady = false;
 
-const url = 'https://api.publicapis.org/'
-const paramCategory = 'entries?category=animals&https=true'
+const url = 'https://api.publicapis.org/';
+const paramCategories = 'categories';
+function getFetchParam(category) {
+    return `entries?category=${category}&https=true`;
+}
 
-const updateSelectsScript = document.createElement('script');
-updateSelectsScript.src = './js/select.js';
+getData();
 
-fetch(url + paramCategory)
+function getData(param = paramCategories) {
+    fetch(url + param)
     .then(response => response.json())
-    .then(json => setData(json.entries))
-    .catch(err => console.log('Fetch problem: ' + err.message));
+    .then(data => {
+        if (param === paramCategories) {
+            data.forEach(e => categories.innerHTML += `<option value="${e}">${e}</option>`);
+            categoriesReady = true;
+        } else {
+            setData(data.entries);
+        }
+    })
+    .catch(err => result.innerHTML = `<span class="error">Fetch problem: ${err.message}</span>`);
+}
+
+categories.onchange = function () {
+    if (categoriesReady) {
+        dataList.selected = 'unset';
+        result.innerHTML = 'unset';
+        let param = getFetchParam(categories.value);
+        getData(param);
+    }
+};
 
 function setData(data) {
     dataStorage = data;
-    document.body.append(updateSelectsScript);
+    getCategoryFunction();
 }
+
+async function getCategoryFunction() {
+    let module = await import('./changeCategories.js');
+    module.default(dataStorage);
+}
+  
+async function getDataListFunction() {
+    let module = await import('./changeDataList.js');
+    module.default(dataStorage[dataList.value]);
+}
+
+dataList.onchange = function() {
+    getDataListFunction();
+};
