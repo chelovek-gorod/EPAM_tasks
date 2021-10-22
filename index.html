@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru_RU">
+<html>
     <head>
         <meta charset="UTF-8">
 
-        <title>Asia chronicle</title>
-        <meta name="description" content="EPAM home task">
+        <title>Day & Night</title>
+        <meta name="description" content="Every box belongs to user and can store some stuff">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,27 +20,34 @@
     <body>
         <div class="container">
 
-            <h1>Asia chronicle</h1>
+            <div id="dayNightImg">
+                <img src="./image/day_night.jpg">
+            </div>
 
-            <label>Category:
-                <select id="categories">
-                    <option selected value="unset">unset</option>
-                </select>
+            <h1>Day
+
+            <label class="switch">
+                <input id="dayNightInput" type="checkbox">
+                <span class="slider round"></span>
             </label>
+
+            Night</h1>
+
+            <form>
+                <label>
+                    <input id="loginInput" type="text" maxlength="10">
+                    <button id="loginBtn" type="button">Login</button>
+                </label>
+            </form>
+
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
             
-            <label>Data list:
-                <select id="dataList">
-                    <option selected value="unset">unset</option>
-                </select>
-            </label>
-
-            <label>Result:
-                <div id="result">unset</div>
-            </label>
-
-        </div>
-
-        <script src="build/main.js"></script>
+        <script src="js/main.js"></script>
 
     </body>
 </html>

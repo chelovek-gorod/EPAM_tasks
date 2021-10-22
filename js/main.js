@@ -1,54 +1,48 @@
 "use strict";
 
-const categories = document.getElementById('categories');
-const dataList = document.getElementById('dataList');
-const result = document.getElementById('result');
+let userLogin = false;
 
-let categoriesReady = false;
-let dataStorage;
+const dayNightInput = document.getElementById('dayNightInput');
+dayNightInput.onchange = () =>  changeTheme ();
 
-const url = 'https://api.publicapis.org/';
-const paramCategories = 'categories';
-function getFetchParam(category) {
-    return `entries?category=${category}&https=true`;
+const loginInput  = document.getElementById('loginInput');
+const loginBtn  = document.getElementById('loginBtn');
+loginBtn.onclick = () => clockLogin();
+
+if (localStorage.getItem('user')) {
+    userLogin = loginInput.disabled = true;
+    loginInput.value = `Hello, ${localStorage.getItem('user')}!`;
+    loginInput.classList.toggle('logged');
+    loginBtn.innerHTML = 'Log Out';
 }
 
-getData();
-
-function getData(param = paramCategories) {
-    fetch(url + param)
-    .then(response => response.json())
-    .then(data => {
-        if (param === paramCategories) {
-            data.forEach(e => categories.innerHTML += `<option value="${e}">${e}</option>`);
-            categoriesReady = true;
-        } else {
-            setData(data.entries);
-        }
-    })
-    .catch(err => result.innerHTML = `<span class="error">Fetch problem: ${err.message}</span>`);
-}
-
-categories.onchange = function () {
-    if (categoriesReady) {
-        let param = getFetchParam(categories.value);
-        getData(param);
+if (localStorage.getItem('night')) {
+    if (localStorage.getItem('night') === 'true') {
+        dayNightInput.checked = true;
+        document.body.classList.toggle('night', dayNightInput.checked);
     }
 }
 
-function setData(data) {
-    dataStorage = data;
-    for (let key in data) dataList.innerHTML += `<option value="${key}">${data[key].API}</option>`;
-    dataList.selected = 'unset';
-    result.innerHTML = 'unset';
+function changeTheme () {
+    document.body.classList.toggle('night', dayNightInput.checked);
+    localStorage.setItem('night', dayNightInput.checked);
 }
 
-dataList.onchange = function () {
-    let object = dataStorage[dataList.value];
-    result.innerHTML = '';
-    result.innerHTML += object.Auth ? `<span>Auth :</span> ${object.Auth} <br>` : '';
-    result.innerHTML += object.Description ? `<span>Description :</span> ${object.Description} <br>` : '';
-    result.innerHTML += object.Cors ? `<span>Cors :</span> ${object.Cors} <br>` : '';
-    result.innerHTML += object.HTTPS ? `<span>HTTPS :</span> ${object.HTTPS} <br>` : '';
-    result.innerHTML += object.Link ? `<a href="${object.Link}" target="_blank">${object.Link}</a>` : '';
+function clockLogin() {
+    if (userLogin) {
+        loginInput.classList.toggle('logged');
+        userLogin = loginInput.disabled = false;
+        loginInput.value = '';
+        loginBtn.innerHTML = 'Login';
+        localStorage.removeItem('user'); 
+    } else {
+        let user = loginInput.value.trim();
+        if (user) {
+            localStorage.setItem('user', user);
+            loginBtn.innerHTML = 'Log Out';
+            loginInput.value = `Hello, ${localStorage.getItem('user')}!`;
+            loginInput.classList.toggle('logged');
+            userLogin = loginInput.disabled = true;
+        } else alert ('Invalid login inputted!');
+    }
 }
