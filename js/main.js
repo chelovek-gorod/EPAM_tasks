@@ -40,6 +40,7 @@ function setData(data) {
     dataStorage = data.slice();
     unsetAll();
     for (let key in data) dataList.innerHTML += `<option value="${key}">${data[key].API}</option>`;
+<<<<<<< Updated upstream
 }
 
 dataList.onchange = function () {
@@ -60,3 +61,27 @@ function unsetAll () {
     dataList.selected = 'unset';
     result.innerHTML = 'unset';
 }
+=======
+}
+
+dataList.onchange = function () {
+    if (dataList.value === 'unset') result.innerHTML = 'unset';    
+    else {
+        let object = dataStorage[dataList.value];
+        result.innerHTML = '';
+        result.innerHTML += object.Auth ? `<span>Auth :</span> ${object.Auth} <br>` : '';
+        result.innerHTML += object.Description ? `<span>Description :</span> ${object.Description} <br>` : '';
+        result.innerHTML += object.Cors ? `<span>Cors :</span> ${object.Cors} <br>` : '';
+        result.innerHTML += object.HTTPS ? `<span>HTTPS :</span> ${object.HTTPS} <br>` : '';
+        result.innerHTML += object.Link ? `<a href="${object.Link}" target="_blank">${object.Link}</a>` : '';
+    }
+}
+
+function unsetAll () {
+    dataList.innerHTML = '<option selected value="unset">unset</option>';
+    dataList.selected = 'unset';
+    result.innerHTML = 'unset';
+}
+
+console.log('+++');
+>>>>>>> Stashed changes
