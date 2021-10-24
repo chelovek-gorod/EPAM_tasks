@@ -30,25 +30,33 @@ function getData(param = paramCategories) {
 }
 
 categories.onchange = function () {
-    if (categoriesReady) {
+    if (categoriesReady && categories.value !== 'unset') {
         let param = getFetchParam(categories.value);
         getData(param);
-    }
+    } else unsetAll();
 }
 
 function setData(data) {
-    dataStorage = data;
+    dataStorage = data.slice();
+    unsetAll();
     for (let key in data) dataList.innerHTML += `<option value="${key}">${data[key].API}</option>`;
-    dataList.selected = 'unset';
-    result.innerHTML = 'unset';
 }
 
 dataList.onchange = function () {
-    let object = dataStorage[dataList.value];
-    result.innerHTML = '';
-    result.innerHTML += object.Auth ? `<span>Auth :</span> ${object.Auth} <br>` : '';
-    result.innerHTML += object.Description ? `<span>Description :</span> ${object.Description} <br>` : '';
-    result.innerHTML += object.Cors ? `<span>Cors :</span> ${object.Cors} <br>` : '';
-    result.innerHTML += object.HTTPS ? `<span>HTTPS :</span> ${object.HTTPS} <br>` : '';
-    result.innerHTML += object.Link ? `<a href="${object.Link}" target="_blank">${object.Link}</a>` : '';
+    if (dataList.value === 'unset') result.innerHTML = 'unset';    
+    else {
+        let object = dataStorage[dataList.value];
+        result.innerHTML = '';
+        result.innerHTML += object.Auth ? `<span>Auth :</span> ${object.Auth} <br>` : '';
+        result.innerHTML += object.Description ? `<span>Description :</span> ${object.Description} <br>` : '';
+        result.innerHTML += object.Cors ? `<span>Cors :</span> ${object.Cors} <br>` : '';
+        result.innerHTML += object.HTTPS ? `<span>HTTPS :</span> ${object.HTTPS} <br>` : '';
+        result.innerHTML += object.Link ? `<a href="${object.Link}" target="_blank">${object.Link}</a>` : '';
+    }
+}
+
+function unsetAll () {
+    dataList.innerHTML = '<option selected value="unset">unset</option>';
+    dataList.selected = 'unset';
+    result.innerHTML = 'unset';
 }
