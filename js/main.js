@@ -31,8 +31,7 @@ function getData(param = paramCategories) {
 
 categories.onchange = function () {
     if (categoriesReady) {
-        dataList.selected = 'unset';
-        result.innerHTML = 'unset';
+        unsetAll();
         let param = getFetchParam(categories.value);
         getData(param);
     }
@@ -54,5 +53,12 @@ async function getDataListFunction() {
 }
 
 dataList.onchange = function() {
-    getDataListFunction();
+    if (dataList.value === 'unset') result.innerHTML = 'unset';
+    else getDataListFunction();
 };
+
+function unsetAll () {
+    dataList.innerHTML = '<option selected value="unset">unset</option>';
+    dataList.selected = 'unset';
+    result.innerHTML = 'unset';
+}
