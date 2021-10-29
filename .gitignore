@@ -1,3 +1,5 @@
 *.psd
-/vscode
+*.cdr
 /.git
+/node_modules
+/.vscode
