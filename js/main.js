@@ -6,12 +6,12 @@ const stackTop = 420;
 const stackArr = [];
 const awaitDiv = document.getElementById('await');
 
-let waitKlick = false;
+let waitClick = false;
 let counting = false;
 
 const keyBoard = document.getElementsByClassName('keyBoard')[0];
 keyBoard.addEventListener('click', e => {
-    if (waitKlick && e.target.classList.contains('key') && !e.target.classList.contains('blocked')) {
+    if (waitClick && e.target.classList.contains('key') && !e.target.classList.contains('blocked')) {
         dropKey(e.target);
     }
 });
@@ -40,15 +40,15 @@ for (let k = 0; k < keyContentSize; k++) {
     if (k > 9) keys[k].classList.add('blocked');
 }
 
-waitKlick = true;
+waitClick = true;
 
-function backStakTop(top, add) {
+function backStackTop(top, add) {
     stack.style.top = add ? ++top + 'px' : --top + 'px';
-    if (top !== stackTop) setTimeout(backStakTop, 100, top, add);
+    if (top !== stackTop) setTimeout(backStackTop, 100, top, add);
 }
 
 function dropKey(key) {
-    waitKlick = false;
+    waitClick = false;
     keyBoard.classList.toggle('blocked');
 
     let leftPoint = tempKey.startLeft + parseInt(key.style.left)
@@ -61,8 +61,8 @@ function dropKey(key) {
     setTimeout(() => {
         tempKey.div.addEventListener("transitionend", () => {
             animationMech.timeout = animationMech.timeoutSlow;
-            animationConv.animate = true;
-            doAnimate(animationConv);
+            animationConveyor.animate = true;
+            doAnimate(animationConveyor);
             moveKeyToStack(leftPoint);
         }, false);
         tempKey.div.style.top = tempKey.maxTop + 'px', 100
@@ -79,7 +79,7 @@ function moveKeyToStack(leftPoint) {
         setTimeout(moveKeyToStack, 60, leftPoint - 25);
     } else {
         animationMech.animate = false;
-        animationConv.animate = false;
+        animationConveyor.animate = false;
         addKeyToStack();
     }
 }
@@ -95,16 +95,16 @@ function addKeyToStack() {
         stack.prepend(stackArr[pos]);
         stack.style.top = stackTop - 90 + 'px';
         stackArr[pos].innerHTML = tempKey.div.innerHTML;
-        backStakTop(stackTop - 90, true);
+        backStackTop(stackTop - 90, true);
     }
     tempKey.div.remove();
 }
 
-function backStakTop(top, key) {
+function backStackTop(top, key) {
     if (top !== stackTop) {
         let topSize =  key ? top + 10 : top - 10;
         stack.style.top = topSize + 'px';
-        setTimeout(backStakTop, 30, topSize, key);
+        setTimeout(backStackTop, 30, topSize, key);
     }
     else {
         if (!counting) testStack();
@@ -146,16 +146,16 @@ function doPromise(v1, sign, v2) {
         setTimeout(() => res(result), delay);
     })
     .then((num) => {
-        let nsize = num.toString().length;
-        if (nsize > 12) {
+        let numSize = num.toString().length;
+        if (numSize > 12) {
             if (num > 999999999999) num = Infinity;
             else if (num < -99999999999) num = -Infinity;
             else {
                 num = num.toString().slice(0, 12);
             }
-            nsize = 12;
+            numSize = 12;
         }
-        let font = (nsize === 1) ? 48 : (nsize < 10) ? (48 - nsize * 4) : 11;
+        let font = (numSize === 1) ? 48 : (numSize < 10) ? (48 - numSize * 4) : 11;
         stackArr[stackArr.length - 2].innerHTML = num; console.log(font);
         stackArr[stackArr.length - 2].style.fontSize = font + 'px';
         awaitDiv.style.opacity = 0;
@@ -168,18 +168,18 @@ function doPromise(v1, sign, v2) {
 function stackPop(last) {
     last.remove();
 
-    let spalsh = document.createElement('img');
-    spalsh.id = 'spalsh';
-    spalsh.src = './Images/spalsh.gif';
-    container.append(spalsh);
-    setTimeout(() => spalsh.remove(), 850);
+    let splash = document.createElement('img');
+    splash.id = 'splash';
+    splash.src = './Images/splash.gif';
+    container.append(splash);
+    setTimeout(() => splash.remove(), 850);
 
-    backStakTop(parseInt(stack.style.top) + 90, false);
+    backStackTop(parseInt(stack.style.top) + 90, false);
 }
 
 function readyToWork() {
     keyBoard.classList.toggle('blocked');
-    waitKlick = true;
+    waitClick = true;
 }
 
 /* ANIMATION */
@@ -191,7 +191,7 @@ const spritesMech = [
     './Images/m0.svg'
 ];
 
-const spritesConv = [
+const spritesConveyor = [
     './Images/c0.svg',
     './Images/c1.svg',
     './Images/c2.svg',
@@ -202,11 +202,11 @@ const spritesConv = [
     './Images/c7.svg'
 ];
 
-const animationConv = {
+const animationConveyor = {
     animate : false,
-    img : document.getElementById('conv'),
+    img : document.getElementById('conveyor'),
     frame : 0,
-    sprite : spritesConv,
+    sprite : spritesConveyor,
     timeout : 60,
 }
 
@@ -223,6 +223,5 @@ const animationMech = {
 function doAnimate(a) {
     a.img.src = a.sprite[a.frame];
     a.frame = (a.frame === a.sprite.length - 1) ? 0 : a.frame + 1;
-    a.repits --;
     if (a.animate) setTimeout(doAnimate, a.timeout, a);
 }
